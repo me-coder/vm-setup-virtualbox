@@ -1,0 +1,24 @@
+1. Create directory for ks host
+$ mkdir -p ~/Workspace/ks
+
+2. Rename anaconda-ks.cfg to ks.cfg
+
+3. Copy the ks.cfg file to ~/Workspace/ks
+
+4. Open a bash termial or cmd and launch a python SimpleHTTPServer
+Bash:
+$ cd ~/Workspace
+$ python -m SimpleHTTPServer
+
+cmd:
+> cd %USERPROFILE%\Workspace
+> python -m SimpleHTTPServer
+
+5. Test the server
+    a. Check machine IP using ipconfig command (ifconfig on linux)
+    b. Open a web-browser
+    c. Open link: http://<machine-ip>:8000/ks
+    NOTE: You shall see a link to ks.cfg. Clinking the link shall download the file.
+
+6. User the link to point at ks file during Centos installation:
+    vmlinuz initrd=initrd.img ks=http://<machine-ip>:8000/ks/ks.cfg

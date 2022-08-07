@@ -1,0 +1,40 @@
+Steps for using Kickstart file:
+-------------------------------
+
+1. Create directory for ks host
+$ mkdir -p ~/Workspace/ks
+
+2. Rename anaconda-ks.cfg to ks.cfg
+
+3. Copy the ks.cfg file to ~/Workspace/ks
+
+4. Open a bash termial or cmd and launch a python SimpleHTTPServer
+Bash:
+$ cd ~/Workspace
+$ python -m SimpleHTTPServer
+
+cmd:
+> cd %USERPROFILE%\Workspace
+> python -m SimpleHTTPServer
+
+5. Test the server
+    a. Check machine IP using ipconfig command (ifconfig on linux)
+    b. Open a web-browser
+    c. Open link: http://<machine-ip>:8000/ks
+    NOTE: You shall see a link to ks.cfg. Clinking the link shall download the file.
+
+6. User the link to point at ks file during Centos installation:
+    vmlinuz initrd=initrd.img ks=http://<machine-ip>:8000/ks/ks.cfg
+
+NOTE: This file can be used on any VM (online/local Virtual box)
+
+
+Steps to clone VM from vm-centos7 base box:
+-------------------------------------------
+
+1. Copy the base box to "C:\Users\<username>\VirtualBox VMs"
+2. Change directory to "C:\Users\<username>\VirtualBox VMs"
+3. Run: /c/Program\ Files/Oracle/VirtualBox/VBoxManage.exe registervm "/c/Users/<username>/VirtualBox\ VMs/vm-centos7/vm-centos7.vbox"
+4. Copy the downloaded vbox-provisioner.sh to "C:\Users\<gid>\VirtualBox VMs\<name_of_new_vm>\shared"
+5. Connect to the VM using the downloaded script: vbox-connect.sh
+
